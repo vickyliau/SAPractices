@@ -1,5 +1,6 @@
 import numpy as num
 import pysal
+num.set_printoptions(suppress=True)
 
 myfile='gridRanQ.gal'
 f=open(myfile,'r')
@@ -20,8 +21,9 @@ for m in range(len(lines)):
 M=num.eye(fline)-num.ones(fline)/fline
 MBM=num.dot(M,weights).dot(M)
 evals,evec=num.linalg.eigh(MBM)
+evec=evec.T[::-1]
+evals=evals[::-1]
 sel = evals/evals[0]>0.25
-EV=[]
-for m in range(evec.shape[1]):
-	EV.append([evec[m][n] for n in range(len(sel)) if sel[n] == 1])
+EV=[evec[m] for m in range(len(evals)) if sel[m]==1]
 
+EV=num.array(EV)
