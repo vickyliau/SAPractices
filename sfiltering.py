@@ -2,7 +2,7 @@ import numpy as num
 import pysal
 num.set_printoptions(suppress=True)
 
-myfile='gridRanQ.gal'
+myfile='crimeR.gal'
 f=open(myfile,'r')
 fline=int(f.readline().replace('\n','').split(' ')[1])
 lines=[]
@@ -26,4 +26,4 @@ evals=evals[::-1]
 sel = evals/evals[0]>0.25
 EV=[evec[m] for m in range(len(evals)) if sel[m]==1]
 
-EV=num.array(EV)
+EV=num.array(EV).T
