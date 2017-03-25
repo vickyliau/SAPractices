@@ -115,7 +115,7 @@ if ps.spreg.diagnostics.jarque_bera(OLSreg)['pvalue'] < 0.05:
 if len(stats.shapiro(OLSreg.u))>1 and stats.shapiro(OLSreg.u)[1]<0.05:
 	print 'residuals are not normality distributed'
 
- ########## SAR Model ########## 
+ ########## AR Model ########## 
 mllag = ps.spreg.ML_Lag(crime,indep,w,name_y='crime',name_x=x_names,name_w=w_name,name_ds=ds_name) 
 
 print '                                     '
@@ -172,7 +172,7 @@ if ps.spreg.diagnostics.jarque_bera(mllag)['pvalue'] < 0.05:
 if len(stats.shapiro(mllag.u))>1 and stats.shapiro(mllag.u)[1]<0.05:
 	print 'residuals are not normality distributed'
 
- ########## AR Model ########## 
+ ########## SAR Model ########## 
 mlerror = ps.spreg.ML_Error(crime,indep,w,name_y='crime',name_x=x_names,name_w=w_name,name_ds=ds_name) 
 
 print '                                     '
